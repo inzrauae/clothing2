@@ -1,0 +1,59 @@
+[
+  {
+    "name": "hero-models",
+    "prompt": "Use case: photorealistic-natural. Asset: premium fashion e-commerce hero photograph for dooo, a Sri Lankan womenswear label with forest green, antique gold and ivory web styling. Create a single portrait 4:5 editorial photograph of two adult Sri Lankan women in beautifully tailored everyday office separates: one in a fluid ivory shirt tucked into high-waist charcoal bootcut trousers, the other in a muted olive silk blouse with warm taupe wide-leg trousers. Scene: restrained sunlit travertine colonnade, softly curved ivory plaster arch, warm shadows, refined tropical modern architecture, no ostentatious palace details. Premium independent fashion campaign, 85mm lens, realistic skin and natural confident expressions, fine fabric texture and elegant garment drape. Full bodies and shoes visible, subjects grouped centrally inside the middle 70% of frame, plenty of headroom for arched website crop; garments occupy lower two thirds. Harmonious warm ivory, olive and charcoal palette. No text, typography, logo, watermarks, collage or border. Anatomically accurate hands and feet. Visually elevated but wearable.",
+    "reference": null,
+    "source": "C:\\Users\\inzra\\.codex\\generated_images\\01a1e8c2-233c-7842-997e-a4519b7b2f28\\exec-291e011a-3614-4d07-a4b2-c899411f73d8.png",
+    "output": "images/premium/hero-models.webp",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "white-collection",
+    "prompt": "Use case: photorealistic-natural. Asset: tall premium womenswear collection photograph. Reference image role: garment style and fabric reference only. Regenerate as one unbranded editorial photograph, not a collage. One adult Sri Lankan woman wearing the reference's flowing white linen shirt and matching high-waist wide-leg linen trousers, quiet smile, natural long dark hair. Sunlit warm ivory plaster courtyard with a travertine step and soft olive leaf shadows. Full-length relaxed standing pose, 2:3 portrait, central subject with 10% headroom, entire garment and sandals visible. Luxury independent fashion campaign with lifelike skin, tactile linen weave, natural wrinkles, soft directional morning light. Match site's warm ivory and forest-green feeling. No lettering, logos, watermark, typography or border. Restrained editorial styling, authentic wearable clothing.",
+    "reference": "images/white-by-dooo.jpg",
+    "source": "C:\\Users\\inzra\\.codex\\generated_images\\01a1e8c2-233c-7842-997e-a4519b7b2f28\\exec-ef0a6a2d-ca10-471d-ae4b-9f56e07ce7ec.png",
+    "output": "images/premium/white-collection.webp",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "office-collection",
+    "prompt": "Use case: photorealistic-natural. Asset: tall luxury officewear collection photograph for a Sri Lankan fashion website. Reference image role: outfit reference only. Reimagine the black long-sleeve collared blouse tucked into high-waist black wide-leg tailored trousers on one adult Sri Lankan woman walking naturally beside a quiet sand-colored limestone building with shadowed doorway. Premium understated fashion editorial, realistic woman with dark hair, full-length view including simple black pointed heels, portrait 2:3, subject centered with 10% space above and below, softly directional early morning light, beautiful cloth drape and fine texture. Calm confident expression and accurate anatomy. No other people, shops, signage, text, brand logos, watermark, typography, collage or border.",
+    "reference": "images/office-trouser-street.jpg",
+    "source": "C:\\Users\\inzra\\.codex\\generated_images\\01a1e8c2-233c-7842-997e-a4519b7b2f28\\exec-f121680c-6fd8-4564-9259-33a79dcb2e43.png",
+    "output": "images/premium/office-collection.webp",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "linen-collection",
+    "prompt": "Use case: photorealistic-natural. Asset: premium Sri Lankan womenswear linen collection tile, square editorial photograph. Input image role: exact garment reference. Show ONE adult Sri Lankan woman in the same white embroidered three-quarter flared sleeve kurtha with pointed shirt collar, button placket, scalloped hem and matching white wide-leg trousers. Preserve the reference's fine white embroidered pattern and silhouette. Relaxed natural pose in a minimalist sunlit ivory courtyard, quiet warm travertine wall and soft green leaf shadows. Frame head to just below knee with face around upper quarter, both sleeves and kurtha hem fully visible, subject central. Understated luxury fashion editorial, 85mm photograph, realistic skin pores and crisp textile detail, warm soft light. No text, logos, signs, watermark, collage, borders or extra people.",
+    "reference": "images/d34-kurtha-set.jpg",
+    "source": "C:\\Users\\inzra\\.codex\\generated_images\\01a1e8c2-233c-7842-997e-a4519b7b2f28\\exec-746b8cbb-995b-4c9c-a4fc-b9539bea8c6b.png",
+    "output": "images/premium/linen-collection.webp",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "frocks-collection",
+    "initialPrompt": "Use case: photorealistic-natural. Asset: square premium fashion collection photograph. Reference role: exact garment reference. One adult Sri Lankan woman wearing the same sleeveless square-neck knee-length fitted-waist frock, navy base with white and muted red windowpane checks, narrow matching belt with square buckle. Preserve plaid pattern, length and silhouette. Pose naturally in a softly lit warm cream architectural courtyard with subtle tree shadows, no props. Head-to-below-knee framing, centered, face near upper quarter, keep neckline waist and hem legible. Refined independent fashion campaign with natural skin texture, fine cotton weave, realistic graceful hands and natural expression, luminous daylight and understated warm color grading. Single photograph, no writing, logo, watermark, promotional graphics or collage.",
+    "prompt": "Use case: precise-object-edit. Image 1 is the edit target premium editorial photograph. Image 2 is the original garment reference. Make ONE correction to image 1: completely remove the added vertical row of center-front buttons and button placket from the navy check dress. Original garment has NO front buttons and NO front placket. Restore a smooth uninterrupted woven navy, white and fine muted-red plaid pattern across the entire front bodice and skirt, with no visible central fastening. Keep the square neckline, sleeveless construction, matching belt and square buckle, hem length, pose, woman, hands, face, lighting, courtyard, crop, dimensions and every other detail of image 1 unchanged. Photorealistic fabric texture, no writing or logo.",
+    "reference": "images/d29-check-frock.jpg",
+    "source": "C:\\Users\\inzra\\.codex\\generated_images\\01a1e8c2-233c-7842-997e-a4519b7b2f28\\exec-4b5e71b6-5b49-4888-b645-b4541c865cd5.png",
+    "output": "images/premium/frocks-collection.webp",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "atelier-editorial",
+    "prompt": "Use case: photorealistic-natural. Asset: tall portrait 3:5 luxury womenswear atelier editorial photograph. Reference role: scene concept only. An adult Sri Lankan woman wearing a simple ivory linen midi dress in a serene contemporary fashion atelier, naturally examining the sleeve texture of an ivory linen shirt hanging on an oak rail. Warm ivory plaster walls, one restrained rail of neatly spaced cream sage and taupe garments, soft sidelight through high window, tactile natural materials. Composition narrow portrait with model and shirt centered, full or three-quarter body, realistic hands clearly and naturally holding fabric, plenty of upper headroom. Refined independent fashion photography, authentic pores, realistic linen fibers and subtle wrinkles, 85mm lens, soft shadows and creamy warm tones. No text, lettering, brand mark, labels, logos, watermark, typography, collage or border. Calm thoughtful candid moment.",
+    "reference": "images/linen-collection.jpg",
+    "source": "C:\\Users\\inzra\\.codex\\generated_images\\01a1e8c2-233c-7842-997e-a4519b7b2f28\\exec-ce1afa03-d236-478b-bab6-3ce6a0f71a4e.png",
+    "output": "images/premium/atelier-editorial.webp",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "linen-top-editorial",
+    "prompt": "Use case: photorealistic-natural. Asset: tall portrait 3:5 premium fashion editorial. Reference role: exact garment construction reference. One adult Sri Lankan woman wearing EXACTLY the pictured split-color short-sleeve collared button-up linen shirt: viewer-left half solid black and viewer-right half white, white pointed collar and small white buttons down center, small white chest pocket on white half. Preserve this distinctive construction and do not alter colors or add patterns. Style with plain high-waist ivory wide-leg trousers. Calm confident woman with black hair swept back, standing beside warm ivory textured plaster in a sunlit minimalist atelier, soft sculptural shadow. Centered model, head-to-below-knee composition with relaxed accurate hands visible, face around upper quarter, sophisticated natural portrait, tactile shirt weave, realistic skin, restrained warm grading. No jeans. No text, logo, typography, labels, watermark, collage, border or extra people.",
+    "reference": "images/d38-linen-top.jpg",
+    "source": "C:\\Users\\inzra\\.codex\\generated_images\\01a1e8c2-233c-7842-997e-a4519b7b2f28\\exec-7b030b8b-619a-4bd3-8c5d-0c89f9874f84.png",
+    "output": "images/premium/linen-top-editorial.webp",
+    "tool": "built-in image_gen"
+  }
+]
