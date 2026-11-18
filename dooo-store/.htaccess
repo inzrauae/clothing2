@@ -1,0 +1,25 @@
+# ---------------------------------------------------------------
+# dooo store — root .htaccess for cPanel
+# Used only when the WHOLE project is uploaded into public_html.
+# (If your domain's document root points at /public, this file is ignored.)
+# ---------------------------------------------------------------
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Never serve hidden files (.env, .git …) except Let's Encrypt checks
+    RewriteRule (^|/)\.(?!well-known/) - [F,L]
+
+    # Never serve application source, config, logs or dependencies
+    RewriteRule ^(app|bootstrap|config|database|resources|routes|storage|tests|vendor)(/|$) - [F,L]
+    RewriteRule ^(artisan|composer\.(json|lock)|package(-lock)?\.json|phpunit\.xml|vite\.config\.js|[^/]+\.md)$ - [F,L]
+
+    # Everything else is served from /public
+    RewriteCond %{REQUEST_URI} !(^|/)public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>

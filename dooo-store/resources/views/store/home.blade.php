@@ -1,0 +1,270 @@
+@extends('layouts.store')
+
+@section('page', 'home')
+@section('title', 'dooo — Fashionably Elegant')
+@section('description', 'dooo — premium ladies trousers, linen frocks, tops and sets from Sri Lanka. Perfect fit, premium quality, affordable prices. Sizes 28 to 46. Islandwide delivery.')
+
+@section('content')
+<div class="loader" id="loader" aria-hidden="true"><div class="loader-inner"><div class="loader-logo"><span>d</span><span>o</span><span>o</span><span>o</span></div><small>Fashionably Elegant</small><div class="loader-bar"><i></i></div></div></div>
+<!-- Hero -->
+<section class="hero" style="padding:0">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow rv-up">The Art of Silhouette</span>
+      <h1 class="rv-up d1">Bespoke Grace.<br><em>Beyond Perfect.</em></h1>
+      <p class="lead rv-up d2">Premium ladies trousers, linen frocks and office wear — crafted for a flattering fit on every woman. Designed in Sri Lanka from fine textiles, in sizes 28 to 46.</p>
+      <div class="hero-actions rv-up d3">
+        <a href="{{ url('shop') }}" class="btn btn-primary">Shop the Collection</a>
+        <a href="#arrivals" class="btn btn-ghost">New Arrivals <svg><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="hero-perks rv-up d3">
+        <span><svg><use href="#i-truck"/></svg>Islandwide delivery</span>
+        <span><svg><use href="#i-box"/></svg>Inspect before you pay</span>
+        <span><svg><use href="#i-ruler"/></svg>Sizes 28" – 46"</span>
+      </div>
+      <div class="proof rv-up d3">
+        <div class="avatars" aria-hidden="true"><i>F</i><i>N</i><i>P</i><i>N</i></div>
+        <p><span class="stars">★★★★★</span><br><b>100% recommend</b> on Facebook from 21 reviews · <b>15,000+</b> women follow dooo</p>
+      </div>
+    </div>
+    <div class="hero-visual rv-up d2">
+      <div class="hero-frame"><img src="{{ asset('images/premium/hero-models.webp') }}" alt="Two women in ivory and olive blouses with tailored charcoal and taupe trousers in a sunlit stone courtyard" width="1122" height="1402" fetchpriority="high" decoding="async"></div>
+      <div class="badge b1"><b>15K+</b><small>Happy<br>followers</small></div>
+      <div class="badge b2"><div><b>100%</b><div class="stars">★★★★★</div></div><small>Recommend<br>21 reviews</small></div>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll<i></i></div>
+</section>
+
+<!-- Trust strip -->
+<div class="trust">
+  <div class="wrap trust-grid">
+    <a href="{{ url('shipping') }}" class="trust-item"><svg><use href="#i-truck"/></svg><div><h4>Fast Islandwide Delivery</h4><p>Delivered to your door, anywhere in Sri Lanka</p></div></a>
+    <a href="{{ url('shipping') }}" class="trust-item"><svg><use href="#i-box"/></svg><div><h4>Inspect Before Payment</h4><p>Open and check your order before you pay</p></div></a>
+    <a href="{{ url('shipping') }}#returns" class="trust-item"><svg><use href="#i-swap"/></svg><div><h4>Easy Returns &amp; Exchanges</h4><p>For size issues or product defects</p></div></a>
+    <a href="{{ url('contact') }}#support" class="trust-item"><svg><use href="#i-headset"/></svg><div><h4>24/7 Online Support</h4><p>We're just a message away, anytime</p></div></a>
+  </div>
+</div>
+
+<!-- Signature trousers -->
+<section class="portfolio" id="trousers">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">The Trouser Edit</span>
+        <h2>The Atelier Portfolio</h2>
+      </div>
+      <p class="lead">Our signature office trousers — tailored to sculpt, made to move. Eight timeless colours, every size from 28 to 46.</p>
+    </div>
+    <div class="tr-grid" id="trGrid"></div>
+    <p class="price-note">Sizes 28"–36" <b>Rs. 1,840</b> &nbsp;·&nbsp; Sizes 38"–46" <b>Rs. 2,040</b> &nbsp;·&nbsp; Colours: Navy, Ivory, Black, Honey Beige, Dark Brown, Grey, Olive Green, Dark Burgundy</p>
+  </div>
+</section>
+
+<div class="ribbon" aria-hidden="true"><div class="rt">
+  <span>Fashionably Elegant</span><span class="o">Perfect Fit</span><span>Premium Quality</span><span class="o">Affordable Prices</span><span>Made in Sri Lanka</span><span class="o">Sizes 28 – 46</span>
+  <span>Fashionably Elegant</span><span class="o">Perfect Fit</span><span>Premium Quality</span><span class="o">Affordable Prices</span><span>Made in Sri Lanka</span><span class="o">Sizes 28 – 46</span>
+</div></div>
+
+<!-- Collections -->
+<section class="collections" id="collections">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Curated Collections</span>
+        <h2>Dressed for every moment</h2>
+      </div>
+      <a href="{{ url('shop') }}" class="btn btn-ghost">Shop all <svg><use href="#i-arrow"/></svg></a>
+    </div>
+    <div class="col-grid">
+      <a href="{{ url('shop') }}?cat=Linen" class="col col-a rv-up"><img src="{{ asset('images/premium/white-collection.webp') }}" alt="Woman in a white linen shirt and wide-leg trousers in a warm ivory courtyard" width="1024" height="1536" loading="lazy" decoding="async"><div class="col-label"><small>The Signature</small><h3>White by dooo</h3><span>Discover</span></div></a>
+      <a href="{{ url('shop') }}?cat=Linen" class="col col-b rv-up d1"><img src="{{ asset('images/premium/linen-collection.webp') }}" alt="White embroidered kurtha and matching trousers in soft natural light" width="1200" height="1200" loading="lazy" decoding="async"><div class="col-label"><small>Breathable &amp; light</small><h3>Linen by dooo</h3><span>Shop linen</span></div></a>
+      <a href="{{ url('shop') }}?cat=Trousers" class="col col-c rv-up d2"><img src="{{ asset('images/premium/office-collection.webp') }}" alt="Woman in a black blouse and tailored black trousers beside a limestone building" width="1024" height="1536" loading="lazy" decoding="async"><div class="col-label"><small>Desk to dinner</small><h3>The Office Edit</h3><span>Shop trousers</span></div></a>
+      <a href="{{ url('shop') }}?cat=Frocks" class="col col-d rv-up d1"><img src="{{ asset('images/premium/frocks-collection.webp') }}" alt="Woman wearing a belted navy, white and red check frock in a sunlit courtyard" width="1200" height="1200" loading="lazy" decoding="async"><div class="col-label"><small>Easy elegance</small><h3>Frocks</h3><span>Shop frocks</span></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- New arrivals -->
+<section id="arrivals">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Just Landed</span>
+        <h2>New Arrivals</h2>
+      </div>
+      <div class="filters" id="filters">
+        <button class="on" data-f="All">All</button>
+        <button data-f="Trousers">Trousers</button>
+        <button data-f="Linen">Linen</button>
+        <button data-f="Frocks">Frocks</button>
+        <button data-f="Sets">Sets</button>
+        <button data-f="Tops">Tops</button>
+      </div>
+    </div>
+    <div class="p-grid" id="pGrid"></div>
+    <div class="rv-more"><a class="btn btn-primary" id="arrivalsMore" href="{{ url('shop') }}">View all designs <svg><use href="#i-arrow"/></svg></a></div>
+  </div>
+</section>
+
+<!-- Editorial -->
+<section class="editorial">
+  <div class="wrap ed-grid">
+    <figure class="ed-img rv-up"><img src="{{ asset('images/our-story.jpg') }}" alt="The dooo studio: a rail of tailored trousers in neutral tones, folded trousers, fabric swatches and dooo packaging" width="1536" height="1024" loading="lazy" decoding="async" style="object-position:78% center"></figure>
+    <figure class="ed-img two rv-up d1"><img src="{{ asset('images/premium/linen-top-editorial.webp') }}" alt="Woman wearing a split black and white linen shirt with ivory trousers" width="971" height="1619" loading="lazy" decoding="async"></figure>
+    <div class="ed-copy rv-up d2">
+      <span class="eyebrow">Our Story</span>
+      <h2 style="margin-top:14px">Elegance is how <em>you feel.</em></h2>
+      <p>At dooo, fashion is more than what you wear — it's how you express yourself with confidence and grace. We began with a simple belief: every woman deserves clothing that blends elegance, comfort and quality effortlessly.</p>
+      <ul class="ed-list">
+        <li>Carefully selected, premium-quality fabrics</li>
+        <li>Thoughtfully crafted, flattering fits</li>
+        <li>Fresh designs inspired by the modern woman</li>
+      </ul>
+      <a href="{{ url('about') }}#story" class="btn btn-primary">Read Our Story</a>
+    </div>
+  </div>
+</section>
+
+<div class="ribbon dark" aria-hidden="true"><div class="rt">
+  <span>White by dooo</span><span class="o">Linen by dooo</span><span>The Office Edit</span><span class="o">Check Before You Pay</span><span>Islandwide Delivery</span>
+  <span>White by dooo</span><span class="o">Linen by dooo</span><span>The Office Edit</span><span class="o">Check Before You Pay</span><span>Islandwide Delivery</span>
+</div></div>
+
+<!-- Sizes -->
+<div class="sizeband">
+  <div class="wrap">
+    <span class="eyebrow">Inclusive Sizing</span>
+    <h2 style="margin-top:12px">Every silhouette, beautifully fitted</h2>
+    <div class="sizes-row" id="sizesRow"></div>
+  </div>
+</div>
+
+<!-- How to order -->
+<section style="padding-top:40px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Effortless Ordering</span><h2>How it works</h2></div>
+      <p class="lead">No account needed. Order online in minutes, or message us and we'll help you choose.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step rv-up"><h4>Choose your style</h4><p>Pick your design, size and colour, then add it to your bag.</p></div>
+      <div class="step rv-up d1"><h4>Checkout in a minute</h4><p>Enter your delivery details. No card or advance payment needed.</p></div>
+      <div class="step rv-up d2"><h4>Fast delivery</h4><p>We confirm your order and courier it to your door, islandwide.</p></div>
+      <div class="step rv-up d3"><h4>Inspect, then pay</h4><p>Open and check your order first. Pay only when you're happy.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Promise -->
+<section class="promise" id="promise">
+  <div class="wrap promise-grid">
+    <div class="seal rv-up" aria-hidden="true">
+      <svg class="ring" viewBox="0 0 300 300"><defs><path id="circ" d="M150,150 m-128,0 a128,128 0 1,1 256,0 a128,128 0 1,1 -256,0"/></defs><text font-family="Jost" font-size="13" fill="#c6a35a"><textPath href="#circ" textLength="800" lengthAdjust="spacing">CHECK FIRST ✦ PAY ON DELIVERY ✦ EASY RETURN ✦</textPath></text></svg>
+      <div class="seal-core"><div><svg><use href="#i-check"/></svg><b>dooo</b><small>Promise</small></div></div>
+    </div>
+    <div>
+      <span class="eyebrow">Shop with Confidence</span>
+      <h2 style="margin:12px 0 18px">You only pay when you love it.</h2>
+      <p class="lead" style="margin-bottom:34px">Ordering online should feel safe. That's why every dooo order is opened and checked by you before you pay a single rupee.</p>
+      <div class="pr-cards">
+        <div class="pr rv-up"><svg><use href="#i-box"/></svg><h4>Open &amp; check first</h4><p>Inspect the fabric, fit and finish at your doorstep before paying.</p></div>
+        <div class="pr rv-up d1"><svg><use href="#i-cash"/></svg><h4>Pay on delivery</h4><p>Pay the courier in cash only after you're happy. No advance payment.</p></div>
+        <div class="pr rv-up d2"><svg><use href="#i-swap"/></svg><h4>Easy returns &amp; exchanges</h4><p>Exchanges available for size issues or product defects on eligible items.</p></div>
+        <div class="pr rv-up"><svg><use href="#i-return"/></svg><h4>Money-back guarantee</h4><p>Received a damaged or incorrect item? Get a hassle-free exchange or your money back.</p></div>
+        <div class="pr rv-up d1"><svg><use href="#i-headset"/></svg><h4>24/7 online support</h4><p>Help with orders, sizes and deliveries, anytime, anywhere. Fast, friendly replies.</p></div>
+        <div class="pr rv-up d2"><svg><use href="#i-reg"/></svg><h4>Registered brand</h4><p>dooo<sup>®</sup> is a registered Sri Lankan clothing brand based in Battaramulla.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Real business -->
+<div class="realbiz">
+  <div class="wrap">
+    <div class="rb-card rv-up">
+      <div class="rb-left">
+        <span class="eyebrow">A Real Sri Lankan Business</span>
+        <h3>Find us, call us, <em>visit our page.</em></h3>
+        <p>We're a genuine local brand with a registered address, a landline and an active community. Check us out before you order — we'd love you to.</p>
+        <div class="rb-stats">
+          <div><b>15K+</b><small>Facebook followers</small></div>
+          <div><b>100%</b><small>Recommend</small></div>
+          <div><b>38+</b><small>Designs released</small></div>
+        </div>
+      </div>
+      <div class="rb-right">
+        <div class="rb-row"><svg><use href="#i-pin"/></svg><div><b>Registered address</b><span>{{ setting('address') }}</span></div></div>
+        <div class="rb-row"><svg><use href="#i-phone"/></svg><div><b>Landline</b><a href="tel:{{ setting('phone') }}">{{ setting('phone_display') }}</a></div></div>
+        <div class="rb-row"><svg><use href="#i-wa"/></svg><div><b>WhatsApp</b><a href="{{ wa_link() }}" target="_blank" rel="noopener">{{ setting('whatsapp_display') }}</a></div></div>
+        <div class="rb-row"><svg><use href="#i-mail"/></svg><div><b>Email</b><a href="mailto:{{ setting('email') }}">{{ setting('email') }}</a></div></div>
+        <div class="rb-row"><svg><use href="#i-fb"/></svg><div><b>Facebook</b><a href="{{ setting('facebook') }}" target="_blank" rel="noopener">{{ preg_replace('#^https?://(www\.)?#', '', setting('facebook')) }}</a></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Reviews -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="rv-top">
+      <div class="rv-score rv-up"><b>100%</b><div class="stars" style="font-size:18px;margin:6px 0">★★★★★</div><p>Recommend · 21 reviews</p></div>
+      <div class="rv-up d1"><span class="eyebrow">Client Voices</span><h2 style="margin-top:12px">Loved by 15,000+ women across Sri Lanka</h2></div>
+    </div>
+    <div class="rv-grid">
+      <div class="rv rv-up"><q>Highly recommend — and super service, good customer care.</q><div class="who"><i>F</i>Fathima A.</div><div class="verified"><svg><use href="#i-check"/></svg>Facebook review</div></div>
+      <div class="rv rv-up d1"><q>Highly recommend. Good product!</q><div class="who"><i>N</i>Noor S.</div><div class="verified"><svg><use href="#i-check"/></svg>Facebook review</div></div>
+      <div class="rv rv-up d2"><q>Gorgeous.</q><div class="who"><i>P</i>Parami D.</div><div class="verified"><svg><use href="#i-check"/></svg>Facebook review</div></div>
+      <div class="rv rv-up d3"><q>Highly recommend ❤️</q><div class="who"><i>N</i>Nimeshi W.</div><div class="verified"><svg><use href="#i-check"/></svg>Facebook review</div></div>
+    </div>
+    <div class="rv-more"><a class="btn btn-ghost" href="{{ rtrim(setting('facebook'), '/') }}/reviews" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg>Read all reviews on Facebook</a></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap faq-grid">
+    <div>
+      <span class="eyebrow">Good to Know</span>
+      <h2 style="margin:12px 0 18px">Questions, answered honestly</h2>
+      <p class="lead">Can't find what you need? Message us — a real person will reply.</p>
+      <div class="safe">
+        <svg><use href="#i-lock"/></svg>
+        <div><b>Your safety matters</b><p>dooo will never ask for your card number, bank PIN or OTP. You pay the courier only after checking your order. Only trust our official number <b style="display:inline;font-family:var(--sans);font-size:13.5px">{{ setting('whatsapp_display') }}</b>.</p></div>
+      </div>
+    </div>
+    <div>
+      <details open><summary>Do I have to pay before delivery?</summary><p>No. You pay the delivery person only after you've opened and checked your order. If you're not satisfied, you can return it to the delivery company.</p></details>
+      <details><summary>How do I place an order?</summary><p>Choose your size and colour, add the piece to your bag and check out with your delivery details. We'll confirm your order on WhatsApp and dispatch it. You can also send the design number, size and colour straight to us on WhatsApp ({{ setting('whatsapp_display') }}).</p></details>
+      <details><summary>Can I return or exchange an item?</summary><p>Yes. Exchanges are available for size issues or product defects on eligible items, and if you receive a damaged or incorrect item we offer a hassle-free exchange or money back. <a href="{{ url('shipping') }}#returns" style="color:var(--green);border-bottom:1px solid var(--gold)">See our returns policy</a>.</p></details>
+      <details><summary>Do you deliver to my area?</summary><p>Yes — we deliver islandwide across Sri Lanka. We'll confirm the delivery timing when you order.</p></details>
+      <details><summary>What sizes are available?</summary><p>Our trousers come in waist sizes 28" to 46". Tops and frocks come in M, L, XL, 2XL and 3XL. Unsure which fits? Send us your measurements and we'll help you choose.</p></details>
+      <details><summary>Will the product look like the photos?</summary><p>Every product is listed with its design number so you receive exactly the style you ordered — and you can check it before paying.</p></details>
+      <details><summary>Do you accept wholesale orders?</summary><p>Yes, both wholesale and retail orders are welcome. Message us on WhatsApp for wholesale pricing.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta" id="contact">
+  <div class="wrap">
+    <span class="eyebrow">At Your Service</span>
+    <h2>Find your perfect fit — <em>we're here 24/7.</em></h2>
+    <p>Fast responses. Friendly support. Reliable service. Ask us about orders, sizes, deliveries or wholesale pricing, anytime.</p>
+    <div class="cta-actions">
+      <a class="btn btn-gold" href="{{ wa_link() }}" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>WhatsApp {{ setting('whatsapp_display') }}</a>
+      <a class="btn btn-line" href="tel:{{ setting('phone') }}"><svg><use href="#i-phone"/></svg>Call {{ setting('phone_display') }}</a>
+    </div>
+    <div class="socials">
+      <a href="{{ setting('facebook') }}" target="_blank" rel="noopener" aria-label="Facebook"><svg><use href="#i-fb"/></svg></a>
+      <a href="{{ setting('instagram') }}" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
+      <a href="{{ setting('tiktok') }}" target="_blank" rel="noopener" aria-label="TikTok"><svg><use href="#i-tt"/></svg></a>
+      <a href="{{ setting('youtube') }}" target="_blank" rel="noopener" aria-label="YouTube"><svg><use href="#i-yt"/></svg></a>
+    </div>
+  </div>
+</div>
+@endsection
+
+@push('scripts')
+<script src="{{ asset('assets/js/home.js') }}"></script>
+@endpush

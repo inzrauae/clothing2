@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f4a32">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="images/icon-192.png">
+<link rel="apple-touch-icon" href="images/icon-180.png">
+<title>Product — dooo</title>
+<meta name="description" content="dooo premium ladies' wear. Fast islandwide delivery, inspect before you pay, easy exchanges.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/store.css">
+</head>
+<body data-page="product">
+
+<section class="pd">
+  <div class="wrap" id="pd"></div>
+</section>
+
+<section class="related" id="relatedWrap">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Complete the look</span><h2>You may also love</h2></div>
+      <a href="shop.html" class="btn btn-ghost" id="relatedAll">Shop all <svg><use href="#i-arrow"/></svg></a>
+    </div>
+    <div class="p-grid" id="related"></div>
+  </div>
+</section>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+(() => {
+  const S = Store, { esc, fmt } = S;
+  const root = document.getElementById("pd");
+  const p = S.find(S.qs("id"));
+
+  if (!p) {
+    root.innerHTML = `<div class="empty" style="margin:40px 0"><svg><use href="#i-search"/></svg><h3>We couldn't find that piece</h3>
+      <p>It may have sold out or the link may be incorrect.</p><a class="btn btn-primary" href="shop.html">Browse the collection</a></div>`;
+    document.getElementById("relatedWrap").hidden = true;
+    return;
+  }
+
+  const cat = p.cats[0];
+  const fabric = /linen/i.test(p.name) ? "Breathable linen fabric" : /cutlon/i.test(p.name) ? "Soft, easy-care cutlon fabric"
+    : p.cats.includes("Trousers") ? "Premium suiting fabric with a smooth drape" : "Carefully selected premium fabric";
+  document.title = `${p.name} — Design No ${p.id} — dooo`;
+  document.querySelector('meta[name="description"]').content = `${p.name} (Design No ${p.id}) by dooo. ${p.desc}`;
+
+  const sizeGuide = p.sizes === "waist"
+    ? `<p>Trouser sizes are your waist measurement in inches. Measure around your natural waist and choose the closest size.</p>
+       <table class="size-table"><tr><th>Size</th>${S.SIZES.waist.slice(0, 5).map((s) => `<td>${s}"</td>`).join("")}</tr>
+       <tr><th>Size</th>${S.SIZES.waist.slice(5).map((s) => `<td>${s}"</td>`).join("")}</tr></table>
+       ${p.priceLarge ? `<p style="margin-top:10px">Sizes 28"–36": <b>${fmt(p.price)}</b> · Sizes 38"–46": <b>${fmt(p.priceLarge)}</b></p>` : ""}`
+    : `<p>Available in ${S.SIZES.alpha.join(", ")}. Between sizes? Send us your bust, waist and hip measurements on WhatsApp and we'll recommend the right fit.</p>`;
+
+  root.innerHTML = `
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span><a href="shop.html">Shop</a></span><span><a href="shop.html?cat=${cat}">${cat}</a></span><span>No. ${p.id}</span></nav>
+  <div class="pd-grid">
+    <div class="pd-media">
+      <div class="pd-frame" id="frame">
+        ${p.tag ? `<span class="tag">${esc(p.tag)}</span>` : ""}
+        <img src="${S.imgSrc(p)}" data-ph="Design No · ${p.id}" alt="${esc(p.name)}, design number ${p.id}" fetchpriority="high">
+        <button class="p-wish" data-wish="${p.id}" aria-label="Save ${esc(p.name)}"><svg><use href="#i-heart"/></svg></button>
+      </div>
+    </div>
+    <div class="pd-info">
+      <div class="dn">Design No · ${p.id} · ${p.cats.join(" · ")}</div>
+      <h1>${esc(p.name)}</h1>
+      <div class="pd-price" id="price"></div>
+      <p class="pd-desc">${esc(p.desc)}</p>
+      <div id="opts">${S.optsHTML(p)}</div>
+      <div class="opt-head" style="margin-top:6px"><span>Quantity</span></div>
+      <div class="pd-buy">
+        <div class="qty"><button type="button" id="qMinus" aria-label="Decrease quantity"><svg><use href="#i-minus"/></svg></button><output id="qty">1</output><button type="button" id="qPlus" aria-label="Increase quantity"><svg><use href="#i-plus"/></svg></button></div>
+        <button class="btn btn-primary" id="addBag" type="button"><svg><use href="#i-bag"/></svg>Add to bag</button>
+        <button class="wish-big" data-wish="${p.id}" aria-label="Save to wishlist"><svg><use href="#i-heart"/></svg></button>
+      </div>
+      <a class="btn btn-ghost pd-wa" id="waBuy" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Order on WhatsApp</a>
+      <div class="pd-assure">
+        <div><svg><use href="#i-truck"/></svg><span><b>Fast delivery</b>Islandwide across Sri Lanka</span></div>
+        <div><svg><use href="#i-box"/></svg><span><b>Inspect first</b>Open &amp; check before paying</span></div>
+        <div><svg><use href="#i-swap"/></svg><span><b>Easy exchanges</b>For size issues or defects</span></div>
+        <div><svg><use href="#i-headset"/></svg><span><b>24/7 support</b>We're a message away</span></div>
+      </div>
+      <div class="pd-acc">
+        <details open><summary>Details</summary><div class="acc-body"><ul>
+          <li>${fabric}</li>
+          <li>Design number ${p.id}: quote it when contacting us</li>
+          <li>${p.colours ? `${p.colours.length} colours: ${p.colours.join(", ")}` : "Colour as pictured"}</li>
+          <li>Crafted with attention to detail for comfort and a flattering fit</li>
+        </ul></div></details>
+        <details id="sizeGuide"><summary>Size guide</summary><div class="acc-body">${sizeGuide}</div></details>
+        <details><summary>Delivery, returns &amp; guarantee</summary><div class="acc-body">
+          <p>Fast islandwide delivery across Sri Lanka. Open and inspect your order before payment. Exchanges are available for size issues or product defects, and if you receive a damaged or incorrect item we offer a hassle-free exchange or money back on eligible purchases.</p>
+          <p style="margin-top:10px"><a href="shipping.html" style="color:var(--green);border-bottom:1px solid var(--gold)">Read our shipping &amp; returns policy</a></p>
+        </div></details>
+      </div>
+    </div>
+  </div>`;
+
+  /* price */
+  const priceEl = document.getElementById("price");
+  const showPrice = (size) => {
+    if (p.price == null) { priceEl.innerHTML = `<span class="ask">Price on request</span><small>We'll confirm the price with your order</small>`; return; }
+    const u = S.priceFor(p, size);
+    priceEl.innerHTML = `${p.compare ? `<s>${fmt(p.compare)}</s>` : ""}${!size && p.from ? "From " : ""}${fmt(u)}${p.priceLarge && !size ? `<small>${fmt(p.priceLarge)} for sizes 38"+</small>` : ""}`;
+  };
+  showPrice(null);
+
+  /* options + qty */
+  const opts = document.getElementById("opts");
+  let qty = 1;
+  const qEl = document.getElementById("qty");
+  const st = S.bindOpts(opts, p, (s) => { showPrice(s.size); updateWa(); });
+  document.getElementById("qMinus").onclick = () => { qty = Math.max(1, qty - 1); qEl.textContent = qty; updateWa(); };
+  document.getElementById("qPlus").onclick = () => { qty = Math.min(20, qty + 1); qEl.textContent = qty; updateWa(); };
+  const wa = document.getElementById("waBuy");
+  const updateWa = () => {
+    wa.href = S.waLink(`Hi dooo! I'd like to order Design No ${p.id} — ${p.name}.\nSize: ${st.size || "__"}${p.colours ? `\nColour: ${st.colour || "__"}` : ""}\nQty: ${qty}`);
+  };
+  updateWa();
+  document.getElementById("addBag").onclick = () => {
+    if (!S.validOpts(opts, p, st)) return;
+    S.Cart.add(p.id, st.size, st.colour, qty); S.buzz();
+    S.toast(`Added ${qty > 1 ? qty + " × " : ""}Design No ${p.id} to your bag`);
+    const b = document.getElementById("addBag");
+    b.innerHTML = `<svg><use href="#i-check"/></svg>Added — view bag`;
+    b.onclick = () => (location.href = "cart.html");
+  };
+
+  /* zoom on hover (desktop) */
+  const frame = document.getElementById("frame"), img = frame.querySelector("img");
+  if (matchMedia("(hover:hover)").matches) {
+    frame.addEventListener("mousemove", (e) => {
+      const r = frame.getBoundingClientRect();
+      img.style.transformOrigin = `${((e.clientX - r.left) / r.width) * 100}% ${((e.clientY - r.top) / r.height) * 100}%`;
+      frame.classList.add("zoom");
+    });
+    frame.addEventListener("mouseleave", () => frame.classList.remove("zoom"));
+  }
+
+  /* related */
+  const rel = S.products.filter((x) => x.id !== p.id && x.cats.some((c) => p.cats.includes(c))).slice(0, 4);
+  const fill = rel.length < 4 ? S.products.filter((x) => x.id !== p.id && !rel.includes(x)).slice(0, 4 - rel.length) : [];
+  document.getElementById("related").innerHTML = [...rel, ...fill].map(S.card).join("");
+  document.getElementById("relatedAll").href = `shop.html?cat=${cat}`;
+})();
+</script>
+</body>
+</html>

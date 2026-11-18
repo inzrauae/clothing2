@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f4a32">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="images/icon-192.png">
+<link rel="apple-touch-icon" href="images/icon-180.png">
+<title>Wishlist — dooo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/store.css">
+</head>
+<body data-page="wishlist">
+
+<section class="page-hero">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span>Wishlist</span></nav>
+    <h1>Saved <em>for you</em></h1>
+    <p class="lead">Pieces you've fallen for. Add them to your bag or share the list with us on WhatsApp.</p>
+  </div>
+</section>
+
+<section class="shop">
+  <div class="wrap">
+    <div class="shop-meta" id="wishMeta"></div>
+    <div class="p-grid" id="wishGrid"></div>
+    <div class="empty" id="wishEmpty" hidden>
+      <svg><use href="#i-heart"/></svg>
+      <h3>Nothing saved yet</h3>
+      <p>Tap the ♡ on any piece to keep it here for later.</p>
+      <a href="shop.html" class="btn btn-primary">Explore the collection</a>
+    </div>
+  </div>
+</section>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+(() => {
+  const S = Store;
+  const render = () => {
+    const list = S.Wish.list();
+    document.getElementById("wishEmpty").hidden = list.length > 0;
+    document.getElementById("wishMeta").innerHTML = list.length
+      ? `<span><b>${list.length}</b> saved ${list.length === 1 ? "piece" : "pieces"}</span>
+         <a class="clear-link" target="_blank" rel="noopener" href="${S.waLink(`Hi dooo! I'd like to ask about these designs: ${list.map((p) => `No ${p.id} (${p.name})`).join(", ")}`)}">Ask about these on WhatsApp</a>`
+      : "";
+    const grid = document.getElementById("wishGrid");
+    grid.innerHTML = list.map(S.card).join("");
+    S.enhance(grid);
+    grid.querySelectorAll(".rv-up").forEach((el) => el.classList.add("in"));
+  };
+  S.onChange(render);
+  render();
+})();
+</script>
+</body>
+</html>
