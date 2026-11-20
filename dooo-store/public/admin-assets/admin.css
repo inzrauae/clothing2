@@ -12,8 +12,8 @@
   --radius:16px; --radius-sm:10px;
   --shadow:0 1px 2px rgba(16,24,20,.04),0 8px 24px -12px rgba(16,24,20,.12);
   --shadow-lg:0 24px 60px -24px rgba(10,53,36,.35);
-  --sans:"Jost",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --serif:"Cormorant Garamond",Georgia,serif;
+  --sans:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Playfair Display",Georgia,serif;
   --side:262px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -72,7 +72,7 @@ svg.i{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-widt
 
 .content{padding:28px 30px 60px;max-width:1440px;width:100%}
 .page-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px}
-.page-head h1{font-family:var(--serif);font-size:38px;font-weight:600;color:var(--green-d);line-height:1.05;letter-spacing:-.005em}
+.page-head h1{font-family:var(--serif);font-size-adjust:.47;font-size:38px;font-weight:600;color:var(--green-d);line-height:1.05;letter-spacing:-.005em}
 .page-head p{color:var(--muted);margin-top:4px}
 .crumb{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:6px;display:flex;gap:8px;align-items:center}
 .crumb a:hover{color:var(--green)}
@@ -118,7 +118,7 @@ svg.i{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-widt
 .hero-card{background:linear-gradient(120deg,var(--green) 0%,var(--green-d) 70%);color:#fff;border:0;position:relative;overflow:hidden}
 .hero-card::before{content:"dooo";position:absolute;right:-10px;bottom:-60px;font-size:180px;font-weight:500;letter-spacing:-.04em;color:rgba(230,207,150,.07);line-height:1}
 .hero-card .card-b{position:relative;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-.hero-card h2{font-family:var(--serif);font-size:30px;font-weight:600;color:#fff}
+.hero-card h2{font-family:var(--serif);font-size-adjust:.47;font-size:30px;font-weight:600;color:#fff}
 .hero-card h2 em{color:var(--gold-l)}
 .hero-card p{color:rgba(255,255,255,.75);margin-top:4px}
 .hero-stats{display:flex;gap:26px}
@@ -328,8 +328,8 @@ dialog.modal::backdrop{background:rgba(7,37,25,.5);backdrop-filter:blur(3px)}
 .auth-art::before{width:520px;height:520px;right:-180px;top:-140px}
 .auth-art::after{width:380px;height:380px;left:-140px;bottom:-160px}
 .auth-art .logo{font-size:64px;font-weight:500;letter-spacing:-.03em;color:var(--gold-l);line-height:1;position:relative}
-.auth-art .logo small{display:block;font-family:var(--serif);font-style:italic;font-size:20px;letter-spacing:.12em;color:var(--gold);margin-top:6px}
-.auth-art h2{font-family:var(--serif);font-size:44px;font-weight:500;line-height:1.1;max-width:440px;position:relative}
+.auth-art .logo small{display:block;font-family:var(--serif);font-size-adjust:.47;font-style:italic;font-size:20px;letter-spacing:.12em;color:var(--gold);margin-top:6px}
+.auth-art h2{font-family:var(--serif);font-size-adjust:.47;font-size:44px;font-weight:500;line-height:1.1;max-width:440px;position:relative}
 .auth-art h2 em{color:var(--gold-l)}
 .auth-art p{color:rgba(255,255,255,.72);margin-top:14px;max-width:420px;position:relative}
 .auth-feats{display:grid;gap:12px;position:relative}
@@ -337,7 +337,7 @@ dialog.modal::backdrop{background:rgba(7,37,25,.5);backdrop-filter:blur(3px)}
 .auth-feats span svg{color:var(--gold-l)}
 .auth-form{display:grid;place-items:center;padding:40px 24px;background:var(--bg)}
 .auth-card{width:100%;max-width:420px}
-.auth-card h1{font-family:var(--serif);font-size:40px;font-weight:600;color:var(--green-d);line-height:1.1}
+.auth-card h1{font-family:var(--serif);font-size-adjust:.47;font-size:40px;font-weight:600;color:var(--green-d);line-height:1.1}
 .auth-card>p{color:var(--muted);margin:8px 0 28px}
 .auth-card form{display:grid;gap:18px}
 .auth-card .btn{height:48px;font-size:15px}
@@ -356,7 +356,7 @@ dialog.modal::backdrop{background:rgba(7,37,25,.5);backdrop-filter:blur(3px)}
 .invoice{max-width:820px;margin:30px auto;background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:48px}
 .inv-head{display:flex;justify-content:space-between;gap:20px;border-bottom:2px solid var(--green);padding-bottom:24px;margin-bottom:26px}
 .inv-head .logo{font-size:46px;font-weight:500;letter-spacing:-.02em;color:var(--green);line-height:1}
-.inv-head .logo small{display:block;font-family:var(--serif);font-style:italic;font-size:15px;color:var(--gold-ink)}
+.inv-head .logo small{display:block;font-family:var(--serif);font-size-adjust:.47;font-style:italic;font-size:15px;color:var(--gold-ink)}
 .inv-tools{max-width:820px;margin:20px auto 0;display:flex;justify-content:flex-end;gap:10px;padding:0 16px}
 @media print{
   body{background:#fff}
@@ -405,3 +405,16 @@ dialog.modal::backdrop{background:rgba(7,37,25,.5);backdrop-filter:blur(3px)}
   .chart-box{height:240px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* brand wordmark keeps its geometric logo font */
+.brand b,.auth-art .logo,.inv-head .logo{font-family:"Jost",sans-serif}
+
+html{font-variant-numeric:lining-nums}
+
+/* Slightly darker palette */
+:root{
+  --green:#0b3d29; --green-d:#072a1c; --green-dd:#051d13; --green-l:#165739;
+  --gold:#b89548; --gold-l:#dcc386; --gold-ink:#795a22;
+  --bg:#f2ece1; --line:#e2d8c5; --line-2:#ece4d6;
+  --ink:#161a17; --muted:#5a5850; --faint:#8a877d;
+}

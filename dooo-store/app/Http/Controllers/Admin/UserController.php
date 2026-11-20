@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Support\Audit;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -23,9 +24,10 @@ class UserController extends Controller
             'name' => ['required', 'string', 'max:120'],
             'email' => ['required', 'email', 'max:190', 'unique:users,email'],
             'role' => ['required', Rule::in(array_keys(User::ROLES))],
-            'password' => ['required', Password::min(8)],
+            'password' => ['required', Password::defaults()],
         ]);
-        User::query()->create($data);
+        $new = User::query()->create($data);
+        Audit::log('user.created', ['user' => $new->email, 'role' => $new->role]);
 
         return back()->with('ok', "Team member {$data['name']} added. They can sign in at /admin.");
     }
@@ -35,7 +37,7 @@ class UserController extends Controller
         $data = $request->validate([
             'name' => ['required', 'string', 'max:120'],
             'role' => ['required', Rule::in(array_keys(User::ROLES))],
-            'password' => ['nullable', Password::min(8)],
+            'password' => ['nullable', Password::defaults()],
         ]);
 
         if ($user->role === 'owner' && $data['role'] !== 'owner' && User::query()->where('role', 'owner')->count() <= 1) {
@@ -48,6 +50,7 @@ class UserController extends Controller
             $user->password = $data['password'];
         }
         $user->save();
+        Audit::log('user.updated', ['user' => $user->email, 'role' => $user->role, 'password_changed' => ! empty($data['password'])]);
 
         return back()->with('ok', "{$user->name} updated.");
     }
@@ -60,6 +63,7 @@ class UserController extends Controller
         if ($user->role === 'owner' && User::query()->where('role', 'owner')->count() <= 1) {
             return back()->withErrors(['user' => 'There must always be at least one owner.']);
         }
+        Audit::log('user.deleted', ['user' => $user->email]);
         $user->delete();
 
         return back()->with('ok', "{$user->name} removed.");

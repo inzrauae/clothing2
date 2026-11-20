@@ -170,7 +170,8 @@ return [
     |
     */
 
-    'secure' => env('SESSION_SECURE_COOKIE'),
+    // Secure (HTTPS-only) cookies automatically once FORCE_HTTPS is on
+    'secure' => env('SESSION_SECURE_COOKIE', env('FORCE_HTTPS', false)),
 
     /*
     |--------------------------------------------------------------------------

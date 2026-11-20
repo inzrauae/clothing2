@@ -10,6 +10,14 @@ if (! function_exists('setting')) {
     }
 }
 
+if (! function_exists('csp_nonce')) {
+    /** Per-request nonce: inline <script nonce="{{ csp_nonce() }}"> tags are the only inline scripts allowed to run. */
+    function csp_nonce(): string
+    {
+        return \App\Http\Middleware\SecurityHeaders::nonce();
+    }
+}
+
 if (! function_exists('setting_all')) {
     /** All store settings as key => value. */
     function setting_all(): array

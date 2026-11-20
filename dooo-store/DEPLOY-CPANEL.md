@@ -49,7 +49,7 @@ The included `.htaccess` sends visitors to the `public` folder and blocks access
 3. Fill in these lines:
 
 ```
-APP_URL=https://www.yourdomain.com
+APP_URL=https://dooo.lk
 
 DB_CONNECTION=mysql
 DB_HOST=localhost
@@ -63,7 +63,7 @@ DB_PASSWORD=your-database-password
 
 ## Step 5: Run the installer
 
-1. Visit **`https://www.yourdomain.com/install`**.
+1. Visit **`https://dooo.lk/install`**.
 2. Every item in the server check should show a green tick. If the database line is red, re-check Step 4.
 3. Enter **your name, email and password**. These become your admin login.
 4. Click **Install store**. The installer creates the tables, loads all 26 products, the 5 categories and your store settings, then signs you in.
@@ -74,15 +74,45 @@ The installer then locks itself and can never run again.
 
 | What | Where |
 |---|---|
-| Your shop | `https://www.yourdomain.com/` |
-| Admin dashboard | `https://www.yourdomain.com/admin` |
+| Your shop | `https://dooo.lk/` |
+| Admin dashboard | `https://dooo.lk/admin` |
 
 **First things to do in the admin:**
 - **Settings**: check your WhatsApp number, phone, email, address, social links and announcement bar.
 - **Products**: fill in prices for items marked *Price on request* and upload new photos.
 - **Team**: add staff accounts. Staff can't change settings or the team.
 
-**Turn on HTTPS:** in cPanel open **SSL/TLS Status** and run **AutoSSL** for your domain. The store works on both `http` and `https`, but customers should always see the padlock.
+**Turn on HTTPS (important):**
+1. In cPanel open **SSL/TLS Status** and run **AutoSSL** for your domain.
+2. Open `https://dooo.lk` and check that the padlock shows.
+3. Edit `.env`: set `FORCE_HTTPS=true` and change `APP_URL` to start with `https://`. Save.
+
+From then on every visitor is moved to the secure address, and admin sign-ins use HTTPS-only cookies. Do step 3 only after step 2 works, or the site will not open.
+
+---
+
+## Security built in
+
+| Protection | What it does |
+|---|---|
+| **Content-Security-Policy** | Only the store's own scripts can run, so scripts injected by an attacker are blocked by the browser. |
+| **Anti-clickjacking and other headers** | The site can't be framed by other websites; MIME sniffing is off; your server's PHP version is hidden; HSTS is on over HTTPS. |
+| **Login protection** | After **5 wrong passwords** an account is locked for **15 minutes**. Each IP is also limited to 6 sign-in tries per minute. |
+| **Strong passwords** | Admin passwords need at least 10 characters, with letters and numbers. |
+| **Server-side prices** | Customers can't change prices in their browser. Every order is priced from the database. |
+| **Spam protection** | Hidden "honeypot" fields and rate limits block bots on checkout and the contact form. |
+| **Safe photo uploads** | Only real JPG, PNG or WEBP images are accepted, renamed by their true type, and nothing can be executed from the uploads folder. |
+| **Protected files** | `.env`, source code, logs and `vendor` can't be downloaded. Admin pages are hidden from Google. |
+| **Roles** | Staff can't change settings or the team. |
+| **Security log** | Sign-ins, failed attempts, lockouts, team and settings changes, and deletions are recorded in `storage/logs/security-YYYY-MM-DD.log`, kept for 90 days. |
+| **Friendly error pages** | Visitors see branded 404, 419, 429 and 500 pages, never technical details. |
+
+**Your part:**
+- Keep `APP_DEBUG=false` in `.env`.
+- Use a unique password for your admin account and give each staff member their own login. Never share one.
+- Remove team members who leave, under **Team**.
+- Every few months, ask your developer to update the framework so you get the latest security fixes.
+- Make regular backups (see below).
 
 ---
 
@@ -107,6 +137,8 @@ Contact-form messages appear under **Messages**, with a one-click **Reply on Wha
 | **Images don't upload** | Make sure `public/uploads/products` exists and has permission **755**. The max size is 5 MB. Your host's PHP `upload_max_filesize` must be at least 6M (cPanel › Select PHP Version › Options). |
 | **Styles look old after an update** | In `.env`, change `ASSET_VERSION=1` to `2` so browsers load the new files. |
 | **Forgot admin password** | Ask another owner or admin to reset it under **Team**. If you are the only owner, contact your developer. |
+| **"Too many failed sign-in attempts"** | Wait 15 minutes, then sign in with the correct password. Check `storage/logs/security-*.log` to see whether someone else has been trying. |
+| **Site won't open after setting FORCE_HTTPS=true** | SSL isn't active yet. Set `FORCE_HTTPS=false`, run AutoSSL, then try again. |
 | **Want to see detailed errors temporarily** | Set `APP_DEBUG=true` in `.env`, reproduce the problem, then set it back to `false` straight away. Never leave it on. |
 
 ## Updating the site later

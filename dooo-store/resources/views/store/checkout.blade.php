@@ -19,8 +19,8 @@
 @endsection
 
 @push('scripts')
+<script nonce="{{ csp_nonce() }}">
 @verbatim
-<script>
 (() => {
   const S = Store, { esc, fmt } = S;
   const root = document.getElementById("coRoot");
@@ -64,6 +64,7 @@
     root.innerHTML = `
     <div class="cart-grid">
       <form id="coForm" novalidate>
+        <div class="hp" aria-hidden="true"><label>Leave this field empty <input name="website" tabindex="-1" autocomplete="off"></label></div>
         <div class="co-block">
           <h3><b>1</b>Contact</h3>
           <p>We'll confirm your order on this number, usually via WhatsApp.</p>
@@ -121,7 +122,7 @@
       btn.disabled = true; btn.dataset.label = btn.innerHTML; btn.innerHTML = "Placing your order…";
       /* open the WhatsApp tab now (inside the click) so pop-up blockers allow it */
       const win = window.open("", "_blank");
-      const payload = { ...customer, items: S.Cart.lines().map((l) => ({ id: l.id, size: l.size, colour: l.colour || null, qty: l.qty })) };
+      const payload = { ...customer, website: v.website || "", items: S.Cart.lines().map((l) => ({ id: l.id, size: l.size, colour: l.colour || null, qty: l.qty })) };
 
       fetch(window.DOOO.routes.order, {
         method: "POST",
@@ -181,6 +182,6 @@
 
   renderForm();
 })();
-</script>
 @endverbatim
+</script>
 @endpush

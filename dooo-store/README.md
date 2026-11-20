@@ -1,6 +1,6 @@
 # dooo store: Laravel storefront and admin
 
-The dooo website (shop, product pages, bag, checkout, about, shipping and contact) runs on a Laravel 11 backend with an admin dashboard. It needs no Node or Vite build, so it runs on any cPanel host with PHP 8.2+ and MySQL.
+The dooo website (shop, product pages, bag, checkout, about, shipping and contact) runs on a Laravel 12 backend with an admin dashboard. It needs no Node or Vite build, so it runs on any cPanel host with PHP 8.2+ and MySQL.
 
 **Putting it online:** see [DEPLOY-CPANEL.md](DEPLOY-CPANEL.md).
 
@@ -31,6 +31,15 @@ Run the tests with `php artisan test`.
 | Editable settings (phone, WhatsApp, social, announcement) | Admin › Settings (`settings` table) |
 | Catalogue seed (26 products, 5 categories) | `database/seeders/CatalogSeeder.php` |
 | Web installer | `/install`, `app/Http/Controllers/InstallController.php` |
+
+## Security
+
+- `app/Http/Middleware/SecurityHeaders.php` sets CSP (nonce-based scripts), X-Frame-Options, nosniff, Referrer-Policy, Permissions-Policy and HSTS. Any new inline script must use `<script nonce="{{ csp_nonce() }}">`, and inline `onclick=` handlers are blocked.
+- `ForceHttps` middleware is controlled by `FORCE_HTTPS` in `.env`, which also makes session cookies HTTPS-only.
+- Admin login: per-IP throttle plus a per-account lockout (`config/security.php`). The password rule is `Password::defaults()`: 10+ characters with letters and numbers.
+- Honeypot field `website` on checkout and contact. Uploads are validated by content and served from `public/uploads`, where `.htaccess` blocks script execution.
+- The audit trail is written by `App\Support\Audit` to `storage/logs/security-*.log`.
+- Run `composer audit` before every deploy. Tests: `tests/Feature/SecurityTest.php`.
 
 ## Notes
 

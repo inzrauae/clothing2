@@ -28,6 +28,7 @@
       </div>
     </div>
     <form class="c-form rv-up d1" id="cForm" novalidate>
+      <div class="hp" aria-hidden="true"><label>Leave this field empty <input id="cWebsite" name="website" tabindex="-1" autocomplete="off"></label></div>
       <h3>Send us a message</h3>
       <p>Your message opens in WhatsApp so you get a reply as fast as possible.</p>
       <div class="form-grid">
@@ -68,8 +69,8 @@
 @endsection
 
 @push('scripts')
+<script nonce="{{ csp_nonce() }}">
 @verbatim
-<script>
 (() => {
   const S = Store, f = document.getElementById("cForm");
   const o = S.qs("order"); if (o) document.getElementById("cOrder").value = o;
@@ -84,7 +85,7 @@
     fetch(window.DOOO.routes.contact, {
       method: "POST",
       headers: { "Content-Type": "application/json", "Accept": "application/json", "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content },
-      body: JSON.stringify({ name: val("cName"), phone: val("cPhone"), topic: val("cTopic"), order_ref: val("cOrder"), message: val("cMsg") })
+      body: JSON.stringify({ name: val("cName"), phone: val("cPhone"), topic: val("cTopic"), order_ref: val("cOrder"), message: val("cMsg"), website: val("cWebsite") })
     })
       .then(async (r) => ({ ok: r.ok, status: r.status, data: await r.json().catch(() => ({})) }))
       .then(({ ok, status, data }) => {
@@ -105,6 +106,6 @@
   });
   f.addEventListener("input", (e) => e.target.closest(".field")?.classList.remove("bad"));
 })();
-</script>
 @endverbatim
+</script>
 @endpush

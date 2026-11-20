@@ -82,7 +82,7 @@ return [
         'whatsapp_display' => '+94 76 140 0696',
         'phone' => '+94342121312',
         'phone_display' => '+94 342 121 312',
-        'email' => 'info@deemindcmb.com',
+        'email' => 'info@dooo.lk',
         'address' => 'No. 10/A, Kumaragewatta Road, Pelawatta, Battaramulla 10120',
         'company' => 'DEEMIND VENTURES (PVT) LTD',
         'group' => 'Convergence Group of Companies',

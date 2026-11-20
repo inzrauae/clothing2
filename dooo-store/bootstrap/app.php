@@ -17,6 +17,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->redirectUsersTo(fn () => route('admin.dashboard'));
         // Trust cPanel / Cloudflare proxies so HTTPS URLs are generated correctly
         $middleware->trustProxies(at: '*');
+        // Security: optional http→https redirect, and security headers (CSP etc.) on every response
+        $middleware->prepend(\App\Http\Middleware\ForceHttps::class);
+        $middleware->append(\App\Http\Middleware\SecurityHeaders::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

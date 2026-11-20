@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Support\StoreCatalog;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -23,6 +25,14 @@ class AppServiceProvider extends ServiceProvider
     {
         // Older MySQL / MariaDB on shared hosting: keep indexed strings within key limits
         Schema::defaultStringLength(191);
+
+        // Strong passwords for every admin account: 10+ characters with letters and numbers
+        Password::defaults(fn () => Password::min(10)->letters()->numbers());
+
+        // Generate https:// links once HTTPS is enforced
+        if (config('security.force_https')) {
+            URL::forceScheme('https');
+        }
 
         Paginator::defaultView('admin.partials.pagination');
 

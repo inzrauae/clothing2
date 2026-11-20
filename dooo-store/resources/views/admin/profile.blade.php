@@ -20,7 +20,7 @@
     <div class="card-h"><h2>Change password</h2><small>Leave empty to keep your current password</small></div>
     <div class="card-b" style="display:grid;gap:16px">
       <div class="f {{ $errors->has('current_password') ? 'bad' : '' }}"><label for="current_password">Current password</label><div class="pw"><input class="in" id="current_password" type="password" name="current_password" autocomplete="current-password"><button type="button" aria-label="Show password"><x-i n="eye"/></button></div></div>
-      <div class="f {{ $errors->has('password') ? 'bad' : '' }}"><label for="password">New password</label><div class="pw"><input class="in" id="password" type="password" name="password" autocomplete="new-password" minlength="8"><button type="button" aria-label="Show password"><x-i n="eye"/></button></div><span class="hint">At least 8 characters.</span></div>
+      <div class="f {{ $errors->has('password') ? 'bad' : '' }}"><label for="password">New password</label><div class="pw"><input class="in" id="password" type="password" name="password" autocomplete="new-password" minlength="10"><button type="button" aria-label="Show password"><x-i n="eye"/></button></div><span class="hint">At least 10 characters, with letters and numbers.</span></div>
       <div class="f"><label for="password_confirmation">Confirm new password</label><input class="in" id="password_confirmation" type="password" name="password_confirmation" autocomplete="new-password"></div>
     </div>
   </section>

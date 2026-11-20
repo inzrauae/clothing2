@@ -85,6 +85,7 @@ class ProductController extends Controller
     public function destroy(Product $product): RedirectResponse
     {
         $name = $product->name;
+        \App\Support\Audit::log('product.deleted', ['design_no' => $product->design_no, 'name' => $name]);
         $this->deleteUpload($product->image);
         $product->delete();
 
@@ -107,11 +108,17 @@ class ProductController extends Controller
             'sort_order' => ['nullable', 'integer', 'min:-9999', 'max:9999'],
             'categories' => ['nullable', 'array'],
             'categories.*' => ['integer', 'exists:categories,id'],
-            'image' => ['nullable', 'file', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
+            // Checked against the real file contents, not just the file name
+            'image' => ['nullable', 'file', 'image', 'mimes:jpg,jpeg,png,webp', 'mimetypes:image/jpeg,image/png,image/webp',
+                'max:'.config('security.upload_max_kb', 5120),
+                'dimensions:max_width='.config('security.upload_max_pixels', 6000).',max_height='.config('security.upload_max_pixels', 6000)],
         ], [
             'design_no.regex' => 'Use letters, numbers or dashes only.',
             'image.mimes' => 'Upload a JPG, PNG or WEBP image.',
             'image.max' => 'The image must be 5 MB or smaller.',
+            'image.image' => 'That file is not a valid image.',
+            'image.mimetypes' => 'Upload a JPG, PNG or WEBP image.',
+            'image.dimensions' => 'The image is too large. Please use a photo under 6000 × 6000 pixels.',
         ]);
 
         $product->fill([
@@ -162,7 +169,12 @@ class ProductController extends Controller
     {
         $dir = public_path('uploads/products');
         File::ensureDirectoryExists($dir);
-        $name = Str::limit($slug, 60, '').'-'.Str::lower(Str::random(6)).'.'.strtolower($file->getClientOriginalExtension() ?: $file->extension());
+        // Extension comes from the detected file type, never from the uploaded file name
+        $ext = ['image/jpeg' => 'jpg', 'image/png' => 'png', 'image/webp' => 'webp'][$file->getMimeType()] ?? null;
+        if (! $ext) {
+            throw \Illuminate\Validation\ValidationException::withMessages(['image' => 'Upload a JPG, PNG or WEBP image.']);
+        }
+        $name = Str::limit(Str::slug($slug), 60, '').'-'.Str::lower(Str::random(10)).'.'.$ext;
         $file->move($dir, $name);
 
         return 'uploads/products/'.$name;

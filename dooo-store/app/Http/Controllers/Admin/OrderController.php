@@ -91,6 +91,7 @@ class OrderController extends Controller
     public function destroy(Order $order): RedirectResponse
     {
         $ref = $order->ref;
+        \App\Support\Audit::log('order.deleted', ['ref' => $ref, 'customer' => $order->name, 'total' => $order->total]);
         $order->delete();
 
         return redirect()->route('admin.orders.index')->with('ok', "Order {$ref} deleted.");

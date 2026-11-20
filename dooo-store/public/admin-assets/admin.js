@@ -80,6 +80,9 @@
     price.addEventListener("input", calc); qty.addEventListener("input", calc);
   });
 
+  /* print buttons (inline onclick handlers are blocked by the Content-Security-Policy) */
+  $$("[data-print]").forEach((b) => b.addEventListener("click", () => window.print()));
+
   /* copy to clipboard */
   $$("[data-copy]").forEach((b) => b.addEventListener("click", () => {
     navigator.clipboard?.writeText(b.dataset.copy).then(() => toast("Copied to clipboard"));
@@ -95,7 +98,7 @@
   const data = window.DASH;
   if (data && window.Chart) {
     const gold = "#c6a35a", green = "#0f4a32";
-    Chart.defaults.font.family = '"Jost", system-ui, sans-serif';
+    Chart.defaults.font.family = '"Manrope", system-ui, sans-serif';
     Chart.defaults.color = "#6b6b63";
     const money = (v) => "Rs. " + Number(v).toLocaleString("en-US");
     const ctx = document.getElementById("salesChart");

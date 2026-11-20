@@ -7,7 +7,7 @@
 <title>Install · dooo store</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('admin-assets/admin.css') }}?v={{ config('app.asset_version') }}">
 </head>
 <body>
@@ -41,7 +41,7 @@
       <div class="form-grid">
         <div class="f"><label for="name">Your name</label><input class="in" id="name" name="name" value="{{ old('name') }}" required></div>
         <div class="f"><label for="email">Email (your login)</label><input class="in" id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="username"></div>
-        <div class="f"><label for="password">Password</label><input class="in" id="password" type="password" name="password" minlength="8" required autocomplete="new-password"><span class="hint">At least 8 characters.</span></div>
+        <div class="f"><label for="password">Password</label><input class="in" id="password" type="password" name="password" minlength="10" required autocomplete="new-password"><span class="hint">At least 10 characters, with letters and numbers.</span></div>
         <div class="f"><label for="password_confirmation">Confirm password</label><input class="in" id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password"></div>
       </div>
       <label class="switch"><input type="checkbox" name="demo" value="1"><span class="tr"></span><span><b>Add sample orders</b><small>Fills the dashboard with example orders and messages so you can explore. Leave off for a real launch.</small></span></label>

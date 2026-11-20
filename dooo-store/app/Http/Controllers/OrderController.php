@@ -16,6 +16,13 @@ class OrderController extends Controller
 {
     public function store(Request $request): JsonResponse
     {
+        // Honeypot: the hidden "website" field is invisible to people, so only bots fill it in
+        if (filled($request->input('website'))) {
+            \App\Support\Audit::log('spam.order_blocked');
+
+            return response()->json(['message' => 'Sorry, we could not place your order. Please order on WhatsApp.'], 422);
+        }
+
         $data = $request->validate([
             'name' => ['required', 'string', 'min:2', 'max:120'],
             'phone' => ['required', 'string', 'max:20', 'regex:/^\+?[\d\s\-]{9,16}$/'],

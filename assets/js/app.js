@@ -236,7 +236,7 @@
         <ul class="f-contact">
           <li><svg><use href="#i-wa"/></svg><a href="https://wa.me/${WA}" target="_blank" rel="noopener">+94 76 140 0696</a></li>
           <li><svg><use href="#i-phone"/></svg><a href="tel:+94342121312">+94 342 121 312</a></li>
-          <li><svg><use href="#i-mail"/></svg><a href="mailto:info@deemindcmb.com">info@deemindcmb.com</a></li>
+          <li><svg><use href="#i-mail"/></svg><a href="mailto:info@dooo.lk">info@dooo.lk</a></li>
           <li><svg><use href="#i-pin"/></svg><span>No. 10/A, Kumaragewatta Road, Pelawatta, Battaramulla 10120</span></li>
         </ul>
         <div class="f-social">
@@ -257,6 +257,7 @@
     <div class="f-bottom">
       <span>© ${new Date().getFullYear()} dooo — Fashionably Elegant. All rights reserved.</span>
       <span>Timeless Fashion. Modern You.</span>
+      <span class="f-credit">Developed by <a href="https://seoconsultantsrilanka.com/" target="_blank" rel="noopener">Buddhika S Weerasekara</a></span>
     </div>
   </div>
 </footer>

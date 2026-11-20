@@ -258,6 +258,7 @@
     <div class="f-bottom">
       <span>© ${new Date().getFullYear()} dooo — Fashionably Elegant. All rights reserved.</span>
       <span>Timeless Fashion. Modern You.</span>
+      <span class="f-credit">Developed by <a href="https://seoconsultantsrilanka.com/" target="_blank" rel="noopener">Buddhika S Weerasekara</a></span>
     </div>
   </div>
 </footer>

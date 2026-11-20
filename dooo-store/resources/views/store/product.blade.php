@@ -21,8 +21,8 @@
 @endsection
 
 @push('scripts')
+<script nonce="{{ csp_nonce() }}">
 @verbatim
-<script>
 (() => {
   const S = Store, { esc, fmt } = S;
   const root = document.getElementById("pd");
@@ -140,6 +140,6 @@
   document.getElementById("related").innerHTML = [...rel, ...fill].map(S.card).join("");
   document.getElementById("relatedAll").href = `shop?cat=${cat}`;
 })();
-</script>
 @endverbatim
+</script>
 @endpush

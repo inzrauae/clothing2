@@ -49,7 +49,7 @@
       <div class="f"><label>Name <i>*</i></label><input class="in" name="name" value="{{ old('name') }}" required></div>
       <div class="f"><label>Email <i>*</i></label><input class="in" type="email" name="email" value="{{ old('email') }}" required autocomplete="off"></div>
       <div class="f"><label>Role</label><select class="in" name="role">@foreach(\App\Models\User::ROLES as $k => $l)<option value="{{ $k }}" @selected(old('role', 'staff') === $k)>{{ $l }}</option>@endforeach</select></div>
-      <div class="f"><label>Password <i>*</i></label><input class="in" type="password" name="password" minlength="8" required autocomplete="new-password"><span class="hint">At least 8 characters. Share it with them privately.</span></div>
+      <div class="f"><label>Password <i>*</i></label><input class="in" type="password" name="password" minlength="10" required autocomplete="new-password"><span class="hint">At least 10 characters, with letters and numbers. Share it with them privately.</span></div>
     </div>
     <div class="modal-f"><button type="button" class="btn btn-ghost sm" data-close-dialog>Cancel</button><button class="btn btn-primary sm" type="submit">Add member</button></div>
   </form>
@@ -64,7 +64,7 @@
       <div class="f"><label>Name</label><input class="in" name="name" value="{{ $u->name }}" required></div>
       <div class="f"><label>Email</label><input class="in" value="{{ $u->email }}" disabled></div>
       <div class="f"><label>Role</label><select class="in" name="role">@foreach(\App\Models\User::ROLES as $k => $l)<option value="{{ $k }}" @selected($u->role === $k)>{{ $l }}</option>@endforeach</select></div>
-      <div class="f"><label>New password</label><input class="in" type="password" name="password" minlength="8" autocomplete="new-password" placeholder="Leave empty to keep current"></div>
+      <div class="f"><label>New password</label><input class="in" type="password" name="password" minlength="10" autocomplete="new-password" placeholder="Leave empty to keep current"></div>
     </div>
     <div class="modal-f"><button type="button" class="btn btn-ghost sm" data-close-dialog>Cancel</button><button class="btn btn-primary sm" type="submit">Save</button></div>
   </form>

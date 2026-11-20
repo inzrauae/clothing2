@@ -26,8 +26,8 @@
 @endsection
 
 @push('scripts')
+<script nonce="{{ csp_nonce() }}">
 @verbatim
-<script>
 (() => {
   const S = Store, { esc, fmt } = S;
   const root = document.getElementById("cartRoot");
@@ -93,6 +93,6 @@
   S.onChange(render);
   render();
 })();
-</script>
 @endverbatim
+</script>
 @endpush

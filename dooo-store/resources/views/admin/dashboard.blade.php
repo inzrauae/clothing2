@@ -161,7 +161,7 @@
 @endsection
 
 @push('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{{ asset('admin-assets/chart.umd.min.js') }}?v=4.4.1"></script>
 @php
   $dash = $chart + ['status' => [
       'labels' => $statuses->pluck('label')->values(),
@@ -169,5 +169,5 @@
       'colors' => $statuses->keys()->map(fn ($k) => $statusColors[$k] ?? '#999')->values(),
   ]];
 @endphp
-<script>window.DASH = @json($dash);</script>
+<script nonce="{{ csp_nonce() }}">window.DASH = @json($dash);</script>
 @endpush

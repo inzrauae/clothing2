@@ -60,7 +60,7 @@
   <div class="wrap">
     <div class="g-card rv-up">
       <div class="seal" aria-hidden="true">
-        <svg class="ring" viewBox="0 0 300 300"><defs><path id="circ2" d="M150,150 m-128,0 a128,128 0 1,1 256,0 a128,128 0 1,1 -256,0"/></defs><text font-family="Jost" font-size="13" fill="#c6a35a"><textPath href="#circ2" textLength="800" lengthAdjust="spacing">MONEY BACK ✦ GUARANTEE ✦ SHOP WITH CONFIDENCE ✦</textPath></text></svg>
+        <svg class="ring" viewBox="0 0 300 300"><defs><path id="circ2" d="M150,150 m-128,0 a128,128 0 1,1 256,0 a128,128 0 1,1 -256,0"/></defs><text font-family="Manrope, sans-serif" font-weight="600" font-size="13" fill="#c6a35a"><textPath href="#circ2" textLength="800" lengthAdjust="spacing">MONEY BACK ✦ GUARANTEE ✦ SHOP WITH CONFIDENCE ✦</textPath></text></svg>
         <div class="seal-core"><div><svg><use href="#i-cash"/></svg><b>100%</b><small>Money back</small></div></div>
       </div>
       <div>

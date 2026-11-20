@@ -11,6 +11,13 @@ class ContactController extends Controller
 {
     public function store(Request $request): JsonResponse
     {
+        // Honeypot: pretend success so bots don't retry, but save nothing
+        if (filled($request->input('website'))) {
+            \App\Support\Audit::log('spam.message_blocked');
+
+            return response()->json(['ok' => true, 'whatsapp_url' => wa_link()], 201);
+        }
+
         $data = $request->validate([
             'name' => ['required', 'string', 'min:2', 'max:120'],
             'phone' => ['nullable', 'string', 'max:30'],

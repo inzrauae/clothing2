@@ -52,6 +52,15 @@ return [
 
     'channels' => [
 
+        // Sign-ins, lockouts, deletions and settings changes (storage/logs/security-YYYY-MM-DD.log)
+        'security' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/security.log'),
+            'level' => 'info',
+            'days' => 90,
+            'replace_placeholders' => true,
+        ],
+
         'stack' => [
             'driver' => 'stack',
             'channels' => explode(',', env('LOG_STACK', 'single')),

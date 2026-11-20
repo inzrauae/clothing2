@@ -60,8 +60,8 @@
 @endsection
 
 @push('scripts')
+<script nonce="{{ csp_nonce() }}">
 @verbatim
-<script>
 (() => {
   const S = Store;
   const grid = document.getElementById("shopGrid"), search = document.getElementById("search"), sort = document.getElementById("sort");
@@ -126,6 +126,6 @@
   if (wantSearch) setTimeout(() => search.focus(), 100);
   addEventListener("hashchange", () => { if (location.hash === "#search") { search.focus(); history.replaceState(null, "", location.pathname + location.search); } });
 })();
-</script>
 @endverbatim
+</script>
 @endpush

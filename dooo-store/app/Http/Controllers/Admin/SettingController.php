@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
+use App\Support\Audit;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -28,10 +29,10 @@ class SettingController extends Controller
             'address' => ['nullable', 'string', 'max:255'],
             'company' => ['nullable', 'string', 'max:120'],
             'group' => ['nullable', 'string', 'max:120'],
-            'facebook' => ['nullable', 'url', 'max:255'],
-            'instagram' => ['nullable', 'url', 'max:255'],
-            'tiktok' => ['nullable', 'url', 'max:255'],
-            'youtube' => ['nullable', 'url', 'max:255'],
+            'facebook' => ['nullable', 'url:http,https', 'max:255'],
+            'instagram' => ['nullable', 'url:http,https', 'max:255'],
+            'tiktok' => ['nullable', 'url:http,https', 'max:255'],
+            'youtube' => ['nullable', 'url:http,https', 'max:255'],
             'announcement' => ['nullable', 'string', 'max:1000'],
             'delivery_fee' => ['nullable', 'integer', 'min:0', 'max:100000'],
             'meta_description' => ['nullable', 'string', 'max:300'],
@@ -44,7 +45,9 @@ class SettingController extends Controller
         $data['delivery_fee'] = (string) (int) ($data['delivery_fee'] ?? 0);
         $data = array_map(fn ($v) => $v ?? '', $data);
 
+        $before = setting_all();
         Setting::put($data);
+        Audit::log('settings.updated', ['changed' => array_keys(array_filter($data, fn ($v, $k) => (string) ($before[$k] ?? '') !== (string) $v, ARRAY_FILTER_USE_BOTH))]);
 
         return back()->with('ok', 'Settings saved. The website has been updated.');
     }

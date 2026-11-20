@@ -160,7 +160,7 @@
 <section class="promise" id="promise">
   <div class="wrap promise-grid">
     <div class="seal rv-up" aria-hidden="true">
-      <svg class="ring" viewBox="0 0 300 300"><defs><path id="circ" d="M150,150 m-128,0 a128,128 0 1,1 256,0 a128,128 0 1,1 -256,0"/></defs><text font-family="Jost" font-size="13" fill="#c6a35a"><textPath href="#circ" textLength="800" lengthAdjust="spacing">CHECK FIRST ✦ PAY ON DELIVERY ✦ EASY RETURN ✦</textPath></text></svg>
+      <svg class="ring" viewBox="0 0 300 300"><defs><path id="circ" d="M150,150 m-128,0 a128,128 0 1,1 256,0 a128,128 0 1,1 -256,0"/></defs><text font-family="Manrope, sans-serif" font-weight="600" font-size="13" fill="#c6a35a"><textPath href="#circ" textLength="800" lengthAdjust="spacing">CHECK FIRST ✦ PAY ON DELIVERY ✦ EASY RETURN ✦</textPath></text></svg>
       <div class="seal-core"><div><svg><use href="#i-check"/></svg><b>dooo</b><small>Promise</small></div></div>
     </div>
     <div>
